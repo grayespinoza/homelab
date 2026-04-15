@@ -14,6 +14,15 @@ services:
     volumes:
       - ${UPLOAD_LOCATION}:/data
       - /etc/localtime:/etc/localtime:ro
+  immich-machine-learning:
+    image: ghcr.io/immich-app/immich-machine-learning:${IMMICH_VERSION:-release}
+    restart: unless-stopped
+    healthcheck:
+      disable: false
+    env_file:
+      - .env
+    volumes:
+      - model-cache:/cache
   redis:
     image: docker.io/valkey/valkey:9@sha256:3eeb09785cd61ec8e3be35f8804c8892080f3ca21934d628abc24ee4ed1698f6
     restart: unless-stopped
@@ -32,3 +41,6 @@ services:
       POSTGRES_INITDB_ARGS: "--data-checksums"
     volumes:
       - ${DB_DATA_LOCATION}:/var/lib/postgresql/data
+
+volumes:
+  model-cache:
