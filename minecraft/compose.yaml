@@ -24,5 +24,7 @@ services:
         vi6ann
       ANNOUNCE_PLAYER_ACHIEVEMENTS: "true"
       LOG_TIMESTAMP: "true"
+      MAX_TICK_TIME: "-1"
+      ENABLE_AUTOPAUSE: "TRUE"
     volumes:
       - "./data:/data"
