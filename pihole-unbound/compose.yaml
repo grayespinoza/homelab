@@ -1,6 +1,6 @@
 services:
   pihole-unbound:
-    image: mpgirro/pihole-unbound:latest
+    image: mpgirro/pihole-unbound:2026.04.0
     hostname: ${HOSTNAME}
     domainname: ${DOMAIN_NAME}
     restart: unless-stopped
