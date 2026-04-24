@@ -13,11 +13,11 @@ x-defaults: &defaults
 services:
   homeassistant:
     <<: *defaults
-    image: ghcr.io/home-assistant/home-assistant:2026.4.4@sha256:c1e5f0147f4cb51ccb05bb30b62a1269cc1bd48a6274792d3b38a77ab274dfd2
+    image: lscr.io/linuxserver/homeassistant:2026.4.4
     network_mode: host
     environment:
-      TZ: America/Los_Angeles
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Los_Angeles
     volumes:
       - ./config:/config
-      - ./etc/localtime:/etc/localtime:ro
-      - ./run/dbus:/run/dbus:ro
