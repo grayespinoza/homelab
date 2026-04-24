@@ -1,7 +1,19 @@
+x-defaults: &defaults
+  restart: unless-stopped
+  cap_drop:
+    - ALL
+  security_opt:
+    - no-new-privileges:true
+  logging:
+    driver: "json-file"
+    options:
+      max-size: "10m"
+      max-file: "3"
+
 services:
   mc:
+    <<: *defaults
     image: itzg/minecraft-server:2026.4.2-java25@sha256:13b19d4134d236de47320e937d456b38bbc148db2bbab4a81064a3e71dbe37ad
-    restart: unless-stopped
     ports:
       - "25565:25565/tcp"
       - "24454:24454/udp"

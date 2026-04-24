@@ -1,7 +1,19 @@
+x-defaults: &defaults
+  restart: unless-stopped
+  cap_drop:
+    - ALL
+  security_opt:
+    - no-new-privileges:true
+  logging:
+    driver: "json-file"
+    options:
+      max-size: "10m"
+      max-file: "3"
+
 services:
   homeassistant:
+    <<: *defaults
     image: ghcr.io/home-assistant/home-assistant:2026.4.3@sha256:ae0800c81fea16bc1241ce03bddb9c6260566e90f58b09d3e5a629e4f68bdc0b
-    restart: unless-stopped
     network_mode: host
     environment:
       TZ: America/Los_Angeles
