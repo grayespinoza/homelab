@@ -14,6 +14,7 @@ services:
   immich-server:
     <<: *defaults
     image: ghcr.io/immich-app/immich-server:v2.7.5@sha256:c15bff75068effb03f4355997d03dc7e0fc58720c2b54ad6f7f10d1bc57efaa5
+    user: 1000:1000
     depends_on:
       - redis
       - database
@@ -29,20 +30,27 @@ services:
   immich-machine-learning:
     <<: *defaults
     image: ghcr.io/immich-app/immich-machine-learning:v2.7.5@sha256:a2501141440f10516d329fdfba2c68082e19eb9ba6016c061ac80d23beadf7f3
+    user: 1000:1000
     healthcheck:
       disable: false
     env_file:
       - .env
     volumes:
       - model-cache:/cache
+      - ./ml-dotcache:/.cache
+      - ./ml-config:/.config
   redis:
     <<: *defaults
     image: docker.io/valkey/valkey:9@sha256:3b55fbaa0cd93cf0d9d961f405e4dfcc70efe325e2d84da207a0a8e6d8fde4f9
+    user: 1000:1000
     healthcheck:
       test: redis-cli ping || exit 1
+    volumes:
+      - ./redis:/data
   database:
     <<: *defaults
     image: ghcr.io/immich-app/postgres:16-vectorchord0.4.3-pgvectors0.2.0@sha256:1a078b237c1d9b420b0ee59147386b4aa60d3a07a8e6a402fc84a57e41b043a4
+    user: 1000:1000
     shm_size: 128mb
     healthcheck:
       disable: false
