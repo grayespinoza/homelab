@@ -13,6 +13,10 @@ x-defaults: &defaults
 services:
   mc:
     <<: *defaults
+    cap_drop:
+      - CHOWN
+      - SETUID
+      - SETGID
     image: itzg/minecraft-server:2026.4.2-java25@sha256:13b19d4134d236de47320e937d456b38bbc148db2bbab4a81064a3e71dbe37ad
     ports:
       - "25565:25565/tcp"
