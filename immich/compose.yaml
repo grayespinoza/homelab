@@ -36,7 +36,7 @@ services:
     env_file:
       - .env
     volumes:
-      - model-cache:/cache
+      - ./model-cache:/cache
       - ./ml-dotcache:/.cache
       - ./ml-config:/.config
   redis:
@@ -61,6 +61,3 @@ services:
       POSTGRES_INITDB_ARGS: "--data-checksums"
     volumes:
       - ${DB_DATA_LOCATION}:/var/lib/postgresql/data
-
-volumes:
-  model-cache:
