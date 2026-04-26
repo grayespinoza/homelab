@@ -25,3 +25,13 @@ services:
       - TZ=America/Los_Angeles
     volumes:
       - ./config:/config
+  matter:
+    <<: *defaults
+    cap_add:
+      - CHOWN
+      - SETUID
+      - SETGID
+    image: ghcr.io/matter-js/python-matter-server:8.1.2
+    network_mode: host
+    volumes:
+      - ./matter:/data
