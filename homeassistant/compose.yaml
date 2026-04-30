@@ -4,7 +4,6 @@ x-defaults: &defaults
     - ALL
   security_opt:
     - no-new-privileges:true
-  read_only: true
   logging:
     driver: "json-file"
     options:
@@ -26,8 +25,13 @@ services:
       - TZ=America/Los_Angeles
     volumes:
       - ./config:/config
+      - ./ha-cache:/config/.cache
+      - ./ha-config:/config/.config
   matter:
     <<: *defaults
+    read_only: true
+    tmpfs:
+      - /tmp
     image: ghcr.io/matter-js/python-matter-server:8.1.2@sha256:6827e352011e2d8c2bde771e446fcf72acc49150ef66bad978816bac1762aad3
     user: 1000:1000
     network_mode: host
