@@ -22,7 +22,7 @@ services:
     healthcheck:
       disable: false
     ports:
-      - "2283:2283"
+      - "2283:2283/tcp"
     env_file:
       - .env
     volumes:
