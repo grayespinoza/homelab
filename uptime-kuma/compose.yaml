@@ -14,6 +14,8 @@ x-defaults: &defaults
 services:
   uptime-kuma:
     <<: *defaults
+    tmpfs:
+      - /tmp
     image: louislam/uptime-kuma:2.3.0@sha256:a8e5e69ce185d5425fcbf2ab14ddf808df5651fb2747a46a17cecf8ed5fd1af2
     user: 1000:1000
     ports:
