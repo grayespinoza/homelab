@@ -37,8 +37,8 @@ services:
     env_file:
       - .env
     volumes:
-      - ./model-cache:/cache
-      - ./ml-dotcache:/.cache
+      - ./cache:/cache
+      - ./ml-cache:/.cache
       - ./ml-config:/.config
   redis:
     <<: *defaults
