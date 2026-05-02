@@ -34,7 +34,7 @@ sudo systemctl start docker
 sudo usermod -aG docker $USER
 
 sudo ufw allow 8123/tcp
-sudo ufw allow 5580
+sudo ufw allow 5580/tcp
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
