@@ -13,7 +13,7 @@ x-defaults: &defaults
 services:
   gitea:
     <<: *defaults
-    image: docker.gitea.com/gitea:1.26.1-rootless
+    image: docker.gitea.com/gitea:1.26.1-rootless@sha256:4c4256497e2e237ddebdd30986c7ce52cb6f936b3e90c34bb9f4665714599f62
     user: 1000:1000
     ports:
       - "3000:3000/tcp"
