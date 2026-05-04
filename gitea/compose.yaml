@@ -1,0 +1,25 @@
+x-defaults: &defaults
+  restart: unless-stopped
+  cap_drop:
+    - ALL
+  security_opt:
+    - no-new-privileges:true
+  logging:
+    driver: "json-file"
+    options:
+      max-size: "10m"
+      max-file: "3"
+
+services:
+  gitea:
+    <<: *defaults
+    image: docker.gitea.com/gitea:1.26.1-rootless
+    user: 1000:1000
+    ports:
+      - "3000:3000/tcp"
+      - "2222:2222/tcp"
+    volumes:
+      - ./data:/var/lib/gitea
+      - ./config:/etc/gitea
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
