@@ -1,6 +1,6 @@
 services:
   pihole-unbound:
-    image: mpgirro/pihole-unbound:2026.04.1@sha256:a228193a0254694566d3e6d4c9f3e73eaff71f180c5661a2c4378126046aec6b
+    image: mpgirro/pihole-unbound:2026.05.0@sha256:96b2e3f52a24056576431640fafd22ac06e827c4ba826d284c100e16342a6f26
     hostname: ${HOSTNAME}
     domainname: ${DOMAIN_NAME}
     restart: unless-stopped
