@@ -30,4 +30,4 @@ services:
       - TZ=America/Los_Angeles
     volumes:
       - ./config:/config
-      - ./media:/media:ro
+      - /mnt/media:/media:ro

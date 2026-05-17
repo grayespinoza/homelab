@@ -22,4 +22,4 @@ services:
       ND_ENABLEINSIGHTSCOLLECTOR: "false"
     volumes:
       - ./data:/data
-      - ./music:/music:ro
+      - /mnt/media/music:/music:ro
