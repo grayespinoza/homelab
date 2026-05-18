@@ -54,3 +54,5 @@ for dir in "${DIRS[@]}"; do
   sudo mkdir -p "/$dir"
 done
 sudo chown -R 1000:1000 "/mnt/media"
+
+sudo apt install -y nfs-common
