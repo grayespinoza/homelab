@@ -9,6 +9,26 @@ sudo ufw default allow outgoing
 
 sudo ufw enable
 
+sudo apt install -y unattended-upgrades apt-listchanges
+
+sudo tee /etc/apt/apt.conf.d/20auto-upgrades <<EOF
+APT::Periodic::AutocleanInterval "7";
+APT::Periodic::Update-Package-Lists "1";
+APT::Periodic::Unattended-Upgrade "1";
+EOF
+
+sudo tee /etc/apt/apt.conf.d/50unattended-upgrades <<EOF
+Unattended-Upgrade::Origins-Pattern {
+  "origin=Debian,codename=${distro_codename},label=Debian";
+  "origin=Debian,codename=${distro_codename}-security,label=Debian-Security";
+  "origin=Debian,codename=${distro_codename},label=Debian-Security";
+};
+Unattended-Upgrade::Remove-Unused-Dependencies "true";
+Unattended-Upgrade::Automatic-Reboot "false";
+EOF
+
+systemctl enable unattended-upgrades
+
 sudo apt install -y nfs-kernel-server
 
 sudo mkdir -p /etc/nfs.conf.d
