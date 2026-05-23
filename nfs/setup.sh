@@ -27,7 +27,7 @@ Unattended-Upgrade::Remove-Unused-Dependencies "true";
 Unattended-Upgrade::Automatic-Reboot "false";
 EOF
 
-systemctl enable unattended-upgrades
+sudo systemctl enable unattended-upgrades
 
 sudo apt install -y nfs-kernel-server
 
