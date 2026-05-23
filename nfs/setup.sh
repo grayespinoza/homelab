@@ -61,5 +61,5 @@ sudo chmod -R 750 "/mnt/media"
 
 sudo exportfs -ra
 
-sudo systemctl enable nfs-server
-sudo systemctl restart nfs-server
+sudo systemctl enable nfs-kernel-server
+sudo systemctl restart nfs-kernel-server
