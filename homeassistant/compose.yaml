@@ -1,18 +1,27 @@
-x-defaults: &defaults
+---
+x-defaults:
   restart: unless-stopped
   cap_drop:
     - ALL
   security_opt:
     - no-new-privileges:true
   logging:
-    driver: "json-file"
+    driver: json-file
     options:
-      max-size: "10m"
+      max-size: 10m
       max-file: "3"
-
 services:
   homeassistant:
-    <<: *defaults
+    restart: unless-stopped
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m
+        max-file: "3"
     cap_add:
       - CHOWN
       - SETUID
@@ -28,7 +37,16 @@ services:
       - ./ha-cache:/config/.cache
       - ./ha-config:/config/.config
   matter:
-    <<: *defaults
+    restart: unless-stopped
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m
+        max-file: "3"
     read_only: true
     tmpfs:
       - /tmp

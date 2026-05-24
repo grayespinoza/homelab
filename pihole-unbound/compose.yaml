@@ -1,3 +1,4 @@
+---
 services:
   pihole-unbound:
     image: mpgirro/pihole-unbound:2026.05.0@sha256:96b2e3f52a24056576431640fafd22ac06e827c4ba826d284c100e16342a6f26
@@ -21,7 +22,6 @@ services:
     volumes:
       - etc_pihole-unbound:/etc/pihole:rw
       - etc_pihole_dnsmasq-unbound:/etc/dnsmasq.d:rw
-
 volumes:
-  etc_pihole-unbound:
-  etc_pihole_dnsmasq-unbound:
+  etc_pihole-unbound: null
+  etc_pihole_dnsmasq-unbound: null
