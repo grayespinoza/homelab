@@ -16,7 +16,7 @@ services:
     cap_add:
       - SETUID
       - SETGID
-    image: shaneisrael/fireshare:v1.6.12
+    image: shaneisrael/fireshare:v1.6.12-lite
     ports:
       - 8080:80/tcp
     environment:
