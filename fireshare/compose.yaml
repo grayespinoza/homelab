@@ -1,0 +1,33 @@
+---
+x-defaults: &defaults
+  restart: unless-stopped
+  cap_drop:
+    - ALL
+  security_opt:
+    - no-new-privileges:true
+  logging:
+    driver: json-file
+    options:
+      max-size: 10m
+      max-file: "3"
+services:
+  fireshare:
+    <<: *defaults
+    cap_add:
+      - SETUID
+      - SETGID
+    image: shaneisrael/fireshare:v1.6.12
+    ports:
+      - 8080:80/tcp
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Los_Angeles
+      - ADMIN_USERNAME=${ADMIN_USERNAME}
+      - ADMIN_PASSWORD=${ADMIN_PASSWORD}
+      - SECRET_KEY=${SECRET_KEY}
+    volumes:
+      - ./data:/data
+      - ./processed:/processed
+      - /mnt/media/games/videos:/videos:ro
+      - /mnt/media/games/images:/images:ro
