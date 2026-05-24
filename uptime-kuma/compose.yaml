@@ -1,5 +1,5 @@
 ---
-x-defaults:
+x-defaults: &defaults
   restart: unless-stopped
   cap_drop:
     - ALL
@@ -13,17 +13,7 @@ x-defaults:
       max-file: "3"
 services:
   uptime-kuma:
-    restart: unless-stopped
-    cap_drop:
-      - ALL
-    security_opt:
-      - no-new-privileges:true
-    read_only: true
-    logging:
-      driver: json-file
-      options:
-        max-size: 10m
-        max-file: "3"
+    <<: *defaults
     tmpfs:
       - /tmp
     image: louislam/uptime-kuma:2.3.2@sha256:9aeb4e51d038047f414309c77a1af553281ca535723cb88907d907269d0a908e
