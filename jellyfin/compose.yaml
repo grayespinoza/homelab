@@ -29,4 +29,8 @@ services:
       - TZ=America/Los_Angeles
     volumes:
       - ./config:/config
-      - /mnt/media:/media:ro
+      - /mnt/media/anime/movies:/data/movies:ro
+      - /mnt/media/anime/shows:/data/tvshows:ro
+      - /mnt/media/movies:/data/movies:ro
+      - /mnt/media/music:/data/music:ro
+      - /mnt/media/shows:/data/tvshows:ro

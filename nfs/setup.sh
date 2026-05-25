@@ -42,7 +42,7 @@ EOF
 read -p "Enter Jellyfin IP address: " JELLYFIN_IP
 sudo ufw allow from ${JELLYFIN_IP} to any port 2049 proto tcp
 
-DIRS=(
+JELLYFIN_DIRS=(
   "mnt/media/anime/movies"
   "mnt/media/anime/shows"
   "mnt/media/movies"
@@ -50,12 +50,28 @@ DIRS=(
   "mnt/media/shows"
 )
 
-for dir in "${DIRS[@]}"; do
+for dir in "${JELLYFIN_DIRS[@]}"; do
   sudo mkdir -p "/$dir"
   if ! grep -q "/$dir " /etc/exports; then
     echo "/$dir $JELLYFIN_IP(ro,sync,no_subtree_check,root_squash)" | sudo tee -a /etc/exports
   fi
 done
+
+read -p "Enter Fireshare IP address: " FIRESHARE_IP
+sudo ufw allow from ${FIRESHARE_IP} to any port 2049 proto tcp
+
+FIRESHARE_DIRS=(
+  "mnt/media/games/videos"
+  "mnt/media/games/images"
+)
+
+for dir in "${FIRESHARE_DIRS[@]}"; do
+  sudo mkdir -p "/$dir"
+  if ! grep -q "/$dir " /etc/exports; then
+    echo "/$dir $FIRESHARE_IP(ro,sync,no_subtree_check,root_squash)" | sudo tee -a /etc/exports
+  fi
+done
+
 sudo chown -R 1000:1000 "/mnt/media"
 sudo chmod -R 750 "/mnt/media"
 
