@@ -20,7 +20,7 @@ services:
       - SETGID
     tmpfs:
       - /tmp
-    image: itzg/minecraft-server:2026.7.2-java25@sha256:6ec1110e4d9236d00ae9436a3e4a5929583e5b19cc94b756a7c603f7cf647a77
+    image: itzg/minecraft-server:2026.8.2-java25@sha256:efa878ddb49cf5251b2e5f2ad71b08fd2f7236c1f7907433f6697258b31d2ce4
     ports:
       - 25565:25565/tcp
       - 24454:24454/udp
