@@ -17,7 +17,7 @@ services:
       - CHOWN
       - SETUID
       - SETGID
-    image: lscr.io/linuxserver/jellyfin:10.11.11@sha256:c123ef2f82195e377d8ca3df275f13f9dfa5c6e61b195958662b42b5e54362ab
+    image: lscr.io/linuxserver/jellyfin:10.11.11@sha256:438e44330078e6b1a810fdec9dc0f4773e6595edb137c5eb4417a516da4c7f0e
     ports:
       - 8096:8096/tcp
       - 8920:8920/tcp
