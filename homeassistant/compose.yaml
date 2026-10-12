@@ -17,7 +17,7 @@ services:
       - CHOWN
       - SETUID
       - SETGID
-    image: lscr.io/linuxserver/homeassistant:2026.9.4@sha256:5670b923ae553cb5b337c921e2fa9e08cfb63d7d19e034455b5dea7590cdb2d7
+    image: lscr.io/linuxserver/homeassistant:2026.9.4@sha256:37be06af4a5c28b9a9f93857cc060961847d876a8bbcfebe26bca2a18c570598
     network_mode: host
     environment:
       - PUID=1000
